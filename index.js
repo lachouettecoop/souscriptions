@@ -1,9 +1,11 @@
+require("dotenv").config();
+
 const polka = require("polka");
 const { json } = require("body-parser");
-const jwt = require("jsonwebtoken");
-const app = polka();
+const authenticate = require("./server/lcc/authenticate");
+const makeJWTUserToken = require("./server/lcc/makeJWTUserToken");
 
-const SUPER_SECRET_TOKEN = "anuisteaniuetaulied31";
+const app = polka();
 
 if (process.env.NODE_ENV !== "production") {
   const Bundler = require("parcel-bundler");
@@ -12,28 +14,20 @@ if (process.env.NODE_ENV !== "production") {
   app.use(bundler.middleware());
 }
 
-const makeJWTUserToken = user => {
-  return jwt.sign(
-    {
-      data: { email: user.email, displayName: "Jean TIBOU" }
-    },
-    SUPER_SECRET_TOKEN,
-    { expiresIn: "1h" }
-  );
-};
-
 app
   .use(json())
-  .post("/login", (req, res) => {
+  .post("/login", async (req, res) => {
     let response;
-    if (req.body.password === "coucou") {
+    try {
       response = {
-        token: makeJWTUserToken(req.body)
+        token: makeJWTUserToken(
+          await authenticate(req.body.email, req.body.password)
+        )
       };
-    } else {
+    } catch (error) {
       res.statusCode = 401;
       response = {
-        error: "invalid password"
+        error
       };
     }
     res.end(JSON.stringify(response));

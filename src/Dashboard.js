@@ -8,6 +8,7 @@ const Dashboard = () => {
         <div>
           <h1>Bonjour {user.displayName}</h1>
           <p>Votre token est : {user.token}</p>
+          <pre>{JSON.stringify(user, null, 2)}</pre>
         </div>
       )}
     </Auth>
