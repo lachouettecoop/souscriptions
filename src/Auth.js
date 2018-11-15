@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from "react";
+import jwtDecode from "jwt-decode";
 import Login from "./Login";
 
 const Auth = ({ children }) => {
   const [user, setUser] = useState();
 
-  useEffect(() => {
-    console.log("useAuth effect");
-  });
+  const handleJWT = token => {
+    setUser({ ...jwtDecode(token).data, token });
+  };
 
-  function handleLogin(user, password) {
-    console.log("login", { user, password });
-    setUser({
-      displayName: "Pierre Martin",
-      token: "shhhhh"
-    });
-  }
-
-  return user ? children(user) : <Login onSubmit={handleLogin} />;
+  return user ? children(user) : <Login onSuccess={handleJWT} />;
 };
 
 export default Auth;
