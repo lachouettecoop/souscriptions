@@ -14,15 +14,6 @@ if (process.env.NODE_ENV !== "production") {
   app.use(bundler.middleware());
 }
 
-/**
- * Resources:
- * - https://github.com/auth0/express-jwt
- * - https://github.com/MichielDeMey/express-jwt-permissions
- * - https://github.com/fastify/fastify-auth/blob/master/example.js
- * - https://gist.github.com/drodsou/1a72d843bc7842903601bb9f0e77173e
- * - https://www.npmjs.com/package/multer
- */
-
 app
   .use(json())
   .post("/login", async (req, res) => {
