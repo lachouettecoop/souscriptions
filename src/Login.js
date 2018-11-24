@@ -1,15 +1,20 @@
 import React from "react";
-import { Heading, Text, Button, Box } from "rebass";
+import { Text, Box } from "rebass";
 import { Formik, Form, Field } from "formik";
+import PageHead from "./ui/PageHead";
+import Container from "./ui/Container";
+import FormGroup from "./ui/FormGroup";
+import SubmitButton from "./ui/SubmitButton";
 
 const Login = ({ onSuccess }) => {
   return (
     <Box>
-      <Heading as="h1">Connectez-vous</Heading>
-      <Text as="p">
-        Cet espace est réservé aux membres de La Chouette Coop. Veuillez vous
-        connecter avec vos identifiants habituels.
-      </Text>
+      <PageHead title="Connectez-vous">
+        <Text as="p">
+          Cet espace est réservé aux membres de La Chouette Coop. Veuillez vous
+          connecter avec vos identifiants habituels.
+        </Text>
+      </PageHead>
       <Formik
         onSubmit={(values, actions) => {
           fetch("/login", {
@@ -29,29 +34,41 @@ const Login = ({ onSuccess }) => {
         }}
       >
         {({ status }) => (
-          <Form>
-            <Text>
-              <label htmlFor="email">Votre adresse email</label>
-              <Field type="text" name="email" placeholder="jean@tibou.fr" />
-            </Text>
+          <Container>
+            <Form>
+              <FormGroup
+                htmlFor="email"
+                label="Votre adresse email"
+                help="Sur laquelle vous recevez les informations de La Chouette Coop"
+              >
+                <Field
+                  name="email"
+                  type="text"
+                  placeholder="jean@tibou.fr"
+                  size="40"
+                />
+              </FormGroup>
 
-            <Text>
-              <label htmlFor="password">Le mot de passe associé</label>
-              <Field type="password" name="password" />
-            </Text>
+              <FormGroup htmlFor="password" label="Le mot de passe associé">
+                <Field name="password" type="password" size="20" />
+              </FormGroup>
 
-            {status === "invalid_login" && (
-              <Text>
-                Ces identifiants n’ont pas été reconnus. Vérifiez que les
-                informations sont correctes, et que vous êtes bien adhérent à
-                l’association de La Chouette Coop en 2018. Si le problème
-                persiste, contactez le Bureau des Membres.
-              </Text>
-            )}
-            <Button variant="primary" type="submit">
-              Se connecter
-            </Button>
-          </Form>
+              <SubmitButton
+                error={
+                  status === "invalid_login" && (
+                    <Text>
+                      Ces identifiants n’ont pas été reconnus. Vérifiez que les
+                      informations sont correctes, et que vous êtes bien
+                      adhérent à l’association de La Chouette Coop en 2018. Si
+                      le problème persiste, contactez le Bureau des Membres.
+                    </Text>
+                  )
+                }
+              >
+                Se connecter
+              </SubmitButton>
+            </Form>
+          </Container>
         )}
       </Formik>
     </Box>

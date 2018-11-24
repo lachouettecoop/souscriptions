@@ -4,17 +4,15 @@ import Auth from "./Auth";
 
 const Dashboard = () => {
   return (
-    <Box p={4}>
-      <Auth>
-        {user => (
-          <Box>
-            <Heading>Bonjour {user.displayName}</Heading>
-            <Text as="p">Votre token est : {user.token}</Text>
-            <pre>{JSON.stringify(user, null, 2)}</pre>
-          </Box>
-        )}
-      </Auth>
-    </Box>
+    <Auth>
+      {user => (
+        <Box>
+          <Heading>Bonjour {user.displayName}</Heading>
+          <Text as="p">Votre token est : {user.token}</Text>
+          <pre>{JSON.stringify(user, null, 2)}</pre>
+        </Box>
+      )}
+    </Auth>
   );
 };
 
