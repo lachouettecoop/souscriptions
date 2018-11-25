@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useSessionStorage } from "react-use";
 import jwtDecode from "jwt-decode";
 import Login from "./Login";
 
 const Auth = ({ children }) => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useSessionStorage("lcc-current-user");
 
   const handleJWT = token => {
     setUser({ ...jwtDecode(token).data, token });
   };
 
-  return user ? children(user) : <Login onSuccess={handleJWT} />;
+  const logout = () => {
+    setUser(undefined);
+  };
+
+  return user ? children(user, logout) : <Login onSuccess={handleJWT} />;
 };
 
 export default Auth;

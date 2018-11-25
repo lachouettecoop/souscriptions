@@ -1,6 +1,8 @@
 import React from "react";
-import { Text, Box } from "rebass";
+import { Text, Box, Flex, Card } from "rebass";
 import { Formik, Form, Field } from "formik";
+import { FaInfo } from "react-icons/fa";
+
 import PageHead from "./ui/PageHead";
 import Container from "./ui/Container";
 import FormGroup from "./ui/FormGroup";
@@ -67,6 +69,19 @@ const Login = ({ onSuccess }) => {
               >
                 Se connecter
               </SubmitButton>
+
+              <Card variant="info" mt={2} p={3}>
+                <Flex justifyContent="space-between" alignItems="center">
+                  <Text textAlign="center" mr={3}>
+                    <FaInfo size="2em" />
+                  </Text>
+                  <Text>
+                    Votre session sera automatiquement fermée lorsque vous
+                    fermerez votre navigateur. Pas la peine de penser à vous
+                    déconnecter !
+                  </Text>
+                </Flex>
+              </Card>
             </Form>
           </Container>
         )}

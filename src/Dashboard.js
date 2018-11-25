@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, Text, Heading, Button } from "rebass";
+import { Box, Text, Heading, Button, Flex } from "rebass";
 import { Link } from "@reach/router";
+import { FaExchangeAlt } from "react-icons/fa";
 import Auth from "./Auth";
 import PageHead from "./ui/PageHead";
 import Container from "./ui/Container";
@@ -26,7 +27,7 @@ const StartSubscriptionProcessCTA = () => (
 const Dashboard = () => {
   return (
     <Auth>
-      {user => (
+      {(user, logout) => (
         <Box>
           <PageHead title={`Bonjour ${user.firstname},`}>
             <Text as="p">
@@ -34,6 +35,14 @@ const Dashboard = () => {
               besoin. Elle vous permet également d’accéder aux différentes
               démarches qu’il est possible de faire en ligne.
             </Text>
+            <Button onClick={logout} bg="darkbrown">
+              <Flex alignItems="center" as="span">
+                <FaExchangeAlt />
+                <Text as="span" ml={2}>
+                  Changer d’utilisateur
+                </Text>
+              </Flex>
+            </Button>
           </PageHead>
 
           <Container>
