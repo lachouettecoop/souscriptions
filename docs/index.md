@@ -25,9 +25,8 @@ de les valider et homogénéïser. Une fois les informations valides, je peux
 bloquer leur édition par le Chouettos.
 
 - [x] import des designs tokens depuis le styleguid
-e
-
-- [ ] faire un gabarit de page pas trop moche
+  e
+- [x] faire un gabarit de page pas trop moche
 - [ ] persister le token JWT dans le `sessionStorage` pour rester un minimum
       connecté
 - [ ] prototype front du formulaire de souscription (voir
