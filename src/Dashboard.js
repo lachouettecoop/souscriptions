@@ -5,6 +5,7 @@ import { FaExchangeAlt } from "react-icons/fa";
 import Auth from "./Auth";
 import PageHead from "./ui/PageHead";
 import Container from "./ui/Container";
+import IconButton from "./ui/IconButton";
 
 const StartSubscriptionProcessCTA = () => (
   <Box>
@@ -35,14 +36,9 @@ const Dashboard = () => {
               besoin. Elle vous permet également d’accéder aux différentes
               démarches qu’il est possible de faire en ligne.
             </Text>
-            <Button onClick={logout} bg="darkbrown">
-              <Flex alignItems="center" as="span">
-                <FaExchangeAlt />
-                <Text as="span" ml={2}>
-                  Changer d’utilisateur
-                </Text>
-              </Flex>
-            </Button>
+            <IconButton onClick={logout} bg="darkbrown" icon={FaExchangeAlt}>
+              Changer d’utilisateur
+            </IconButton>
           </PageHead>
 
           <Container>
