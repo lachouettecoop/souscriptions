@@ -60,6 +60,10 @@ const theme = {
     primary: {
       color: colors.white,
       backgroundColor: colors.primary
+    },
+    secondary: {
+      color: colors.primary,
+      backgroundColor: colors.paleyellow
     }
   },
   cards: {
