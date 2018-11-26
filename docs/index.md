@@ -25,16 +25,20 @@ de les valider et homogénéïser. Une fois les informations valides, je peux
 bloquer leur édition par le Chouettos.
 
 - [x] import des designs tokens depuis le styleguid
+e
 
-  e
 - [x] faire un gabarit de page pas trop moche
 - [x] persister le token JWT dans le `sessionStorage` pour rester un minimum
       connecté
-- [ ] prototype front du formulaire de souscription (voir
+- [x] prototype front du formulaire de souscription (voir
       [wizards](#formulaires))
 - [ ] prototype front des écrans du MVP
 - [ ] intéractions serveur et persistence des données
+- [ ] validation des données
 - [ ] upload et gestion des fichiers
+- [ ] fignolage UI/UX:
+  - [ ] logo / images diverses
+  - [ ] scrolltop sur chaque step du wizard
 
 ### 0.2 — Promotion et suivi
 
