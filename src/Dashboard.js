@@ -8,7 +8,7 @@ import Container from "./ui/Container";
 import IconButton from "./ui/IconButton";
 
 const CardWithCTA = ({ children }) => (
-  <Card my={3} p={4} boxShadow="0 2px 5px rgba(0, 0, 0, 0.25)">
+  <Card my={4} p={4} boxShadow="0 2px 5px rgba(0, 0, 0, 0.25)">
     {children}
   </Card>
 );
