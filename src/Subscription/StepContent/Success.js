@@ -22,7 +22,7 @@ const Success = () => (
       Il ne reste plus qu’à vous inscrire à l’une des prochaines{" "}
       <strong>réunions de souscription</strong> prévues.
     </ImportantText>
-    <IconButton as={RouterLink} icon={FaCalendar} to="/">
+    <IconButton as={RouterLink} icon={FaCalendar} to="/reunions">
       Voir les prochaines dates de réunion de souscription
     </IconButton>
   </Box>
