@@ -42,19 +42,35 @@ const colors = {
   white: "#FFFFFF"
 };
 
+const fontFamily = {
+  title: "'Montserrat', sans-serif",
+  text: "'Cabin', sans-serif"
+};
+
 const theme = {
   colors,
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 98],
   Heading: {
-    fontFamily: "'Montserrat', sans-serif"
+    fontFamily: fontFamily.title
   },
   Text: {
-    fontFamily: "'Cabin', sans-serif"
+    fontFamily: fontFamily.text
   },
   buttons: {
     primary: {
       color: colors.white,
       backgroundColor: colors.primary
+    },
+    secondary: {
+      color: colors.primary,
+      backgroundColor: colors.paleyellow
+    }
+  },
+  cards: {
+    info: {
+      backgroundColor: colors.paleyellow,
+      color: colors.primary,
+      fontFamily: fontFamily.text
     }
   }
 };

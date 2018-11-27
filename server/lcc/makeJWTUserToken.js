@@ -4,6 +4,9 @@ const makeJWTUserToken = user => {
   const firstname = user.description;
   const lastname = user.sn.toUpperCase();
 
+  // TODO Fetch user status from local datastore
+  const status = "nouveau";
+
   return jwt.sign(
     {
       data: {
@@ -11,7 +14,8 @@ const makeJWTUserToken = user => {
         lastname,
         displayName: `${firstname} ${lastname}`,
         email: user.mail,
-        barcode: user.homeDirectory
+        barcode: user.homeDirectory,
+        status
       }
     },
     process.env.JWT_SECRET,
