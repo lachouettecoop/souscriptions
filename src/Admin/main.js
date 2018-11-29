@@ -8,8 +8,14 @@ import jsonServerProvider from "ra-data-json-server";
 import frenchMessages from "ra-language-french";
 
 import PeopleIcon from "@material-ui/icons/People";
+import SecurityIcon from "@material-ui/icons/Security";
 
 import { ChouettosList, ChouettosEdit } from "./chouettos";
+import {
+  AuthorizationList,
+  AuthorizationEdit,
+  AuthorizationCreate
+} from "./authorizations";
 
 const dataProvider = jsonServerProvider("/api/v1");
 
@@ -21,10 +27,18 @@ const App = () => (
   >
     <Resource
       name="chouettos"
-      list={ChouettosList}
       icon={PeopleIcon}
+      list={ChouettosList}
       show={ShowGuesser}
       edit={ChouettosEdit}
+    />
+    <Resource
+      name="authorizations"
+      label="Autorisations"
+      icon={SecurityIcon}
+      list={AuthorizationList}
+      edit={AuthorizationEdit}
+      create={AuthorizationCreate}
     />
   </Admin>
 );
