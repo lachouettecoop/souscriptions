@@ -28,7 +28,7 @@ const StepNavigation = () => (
               icon={FaArrowCircleRight}
               variant="primary"
               onClick={next}
-              type="button"
+              type={step.submitForm ? "submit" : "button"}
             >
               {step.labelNext || "Passer à l’étape suivante"}
             </IconButton>

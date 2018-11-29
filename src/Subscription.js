@@ -1,6 +1,8 @@
 import React from "react";
 import { Box, Text } from "rebass";
 import { Formik, Form } from "formik";
+import { navigate } from "@reach/router";
+import ky from "ky";
 
 import Auth from "./Auth";
 import PageHead from "./ui/PageHead";
@@ -31,11 +33,33 @@ const Subscription = () => {
             <Formik
               initialValues={{ nom: user.lastname, prenom: user.firstname }}
               onSubmit={(values, actions) => {
+                // TODO PUT if user already exists
                 console.log({ values });
+                ky.post(`/api/v1/chouettos`, {
+                  json: {
+                    ...values,
+                    id: user.barcode
+                  }
+                })
+                  .json()
+                  .then(res => {
+                    console.log("nouvelles données", res);
+                    actions.setSubmitting(false);
+                    navigate("/");
+                  })
+                  .catch(() => {
+                    actions.setSubmitting(false);
+                    actions.setStatus({
+                      type: "error",
+                      message:
+                        "Une erreur est survenue lors de la sauvegarde des données. Si le problème persiste, contactez nous."
+                    });
+                  });
               }}
             >
               {({ status }) => (
                 <Form>
+                  {status && status.message}
                   <Process />
                 </Form>
               )}

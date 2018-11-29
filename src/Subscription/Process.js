@@ -30,6 +30,7 @@ const Process = () => (
         id="additionnelles"
         name="Informations additionnelles"
         labelNext="Et voilà ! Je valide ces informations."
+        submitForm
       >
         {() => <Additionnelle />}
       </Step>

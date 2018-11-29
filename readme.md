@@ -13,6 +13,8 @@ informations nécessaires en ligne.
 - `npm install`
 - créer un fichier `.env` avec les accès aux services tiers (exemple de fichier
   disponible dans `.env.dist`)
+- récupérez une base existante ou dupliquez celle par défaut dans
+  `data/souscriptions.json` (`cp data/souscriptions{.default,}.json`)
 
 # Lancement
 
