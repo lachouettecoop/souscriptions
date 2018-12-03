@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "@reach/router";
 import { Heading, Box, Text } from "rebass";
 import Container from "./Container";
+import Logo from "../ui/Logo";
 
 const PageHead = ({ title, children }) => (
   <Box
@@ -14,6 +16,11 @@ const PageHead = ({ title, children }) => (
       boxShadow: "0 2px 6px 0 hsla(0,0%,0%,0.2)"
     }}
   >
+    <Text textAlign="center" mb={4}>
+      <Link to="/">
+        <Logo height={"20vh"} />
+      </Link>
+    </Text>
     <Container>
       <Heading as="h1">{title}</Heading>
       {children}
