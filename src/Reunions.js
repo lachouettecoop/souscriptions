@@ -1,6 +1,8 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Box, Heading, Text, Link, Button } from "rebass";
 import { Link as RouterLink } from "@reach/router";
+import ky from "ky";
+
 import Auth from "./Auth";
 import PageHead from "./ui/PageHead";
 import Container from "./ui/Container";
@@ -9,7 +11,7 @@ import IconButton from "./ui/IconButton";
 import { FaArrowCircleLeft } from "react-icons/fa";
 
 const DateReunion = ({ reunion }) => (
-  <Fragment>{reunion.date.toLocaleString("fr-FR")}</Fragment>
+  <Fragment>{new Date(reunion.date).toLocaleString("fr-FR")}</Fragment>
 );
 
 const FramaForm = ({ url, children }) => (
@@ -22,24 +24,14 @@ const FramaForm = ({ url, children }) => (
 );
 
 const Reunions = () => {
-  const reunions = [
-    {
-      date: new Date("2018-12-06 18:30:00"),
-      url:
-        "https://framaforms.org/lcc-inscription-a-la-reunion-de-souscription-du-6-decembre-2018-1543277541"
-    },
-    {
-      date: new Date("2018-12-12 09:00:00"),
-      url:
-        "https://framaforms.org/lcc-inscription-a-la-reunion-de-souscription-du-12-decembre-2018-1543277609"
-    },
-    {
-      date: new Date("2018-12-20 20:30:00"),
-      url:
-        "https://framaforms.org/clone-de-clone-de-lcc-inscription-a-la-reunion-de-souscription-du-20-decembre-2018-1543277631"
-    }
-  ];
+  const [reunions, setReunions] = useState(null);
   const [reunion, setReunion] = useState();
+
+  useEffect(() => {
+    ky.get("/api/v1/reunions")
+      .json()
+      .then(setReunions);
+  }, []);
 
   return (
     <Auth>
@@ -83,22 +75,28 @@ const Reunions = () => {
                   avant la réunion. Cela permettra un gain de temps.
                 </ImportantText>
 
-                {reunions.map(aReunion => (
-                  <Text textAlign="center" my={5} key={aReunion.url}>
-                    <Text fontSize={4}>
-                      <DateReunion reunion={aReunion} />
+                {reunions === null ? (
+                  <Text>Chargement en cours…</Text>
+                ) : reunions.length === 0 ? (
+                  <Text>Aucune réunion prévue pour l’instant</Text>
+                ) : (
+                  reunions.map(aReunion => (
+                    <Text textAlign="center" my={5} key={aReunion.url}>
+                      <Text fontSize={4}>
+                        <DateReunion reunion={aReunion} />
+                      </Text>
+                      <Button
+                        variant="primary"
+                        mt={1}
+                        p={0}
+                        fontSize={1}
+                        onClick={() => setReunion(aReunion)}
+                      >
+                        Choisir cette date
+                      </Button>
                     </Text>
-                    <Button
-                      variant="primary"
-                      mt={1}
-                      p={0}
-                      fontSize={1}
-                      onClick={() => setReunion(aReunion)}
-                    >
-                      Choisir cette date
-                    </Button>
-                  </Text>
-                ))}
+                  ))
+                )}
               </Box>
             )}
           </Container>
