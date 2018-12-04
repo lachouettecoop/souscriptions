@@ -1,14 +1,16 @@
 import React from "react";
-import { Box, Text } from "rebass";
+import { Box, Text, Heading } from "rebass";
 import Undraw from "react-undraw";
 import { FaCalendar } from "react-icons/fa";
 import { Link as RouterLink } from "@reach/router";
 
-import ImportantText from "../../ui/ImportantText";
-import IconButton from "../../ui/IconButton";
+import ImportantText from "../ui/ImportantText";
+import IconButton from "../ui/IconButton";
 
 const Success = () => (
   <Box>
+    <Heading>Merci !</Heading>
+
     <Text as="p">
       Et voilà, nous avons tout ce qu’il faut pour la souscription des parts
       sociales.

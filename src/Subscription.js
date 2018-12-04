@@ -9,6 +9,7 @@ import PageHead from "./ui/PageHead";
 import Container from "./ui/Container";
 
 import Process from "./Subscription/Process";
+import Success from "./Subscription/Success";
 import Footer from "./Subscription/Footer";
 
 const Subscription = () => {
@@ -33,19 +34,18 @@ const Subscription = () => {
             <Formik
               initialValues={{ nom: user.lastname, prenom: user.firstname }}
               onSubmit={(values, actions) => {
-                // TODO PUT if user already exists
                 console.log({ values });
-                ky.post(`/api/v1/chouettos`, {
-                  json: {
-                    ...values,
-                    id: user.barcode
-                  }
+                ky.put(`/api/v1/chouettos/${user.barcode}`, {
+                  json: values
                 })
                   .json()
                   .then(res => {
                     console.log("nouvelles données", res);
                     actions.setSubmitting(false);
-                    navigate("/");
+                    actions.setStatus({
+                      type: "success",
+                      message: "Merci !"
+                    });
                   })
                   .catch(() => {
                     actions.setSubmitting(false);
@@ -59,8 +59,12 @@ const Subscription = () => {
             >
               {({ status }) => (
                 <Form>
-                  {status && status.message}
-                  <Process />
+                  {status && status.type === "error" && status.message}
+                  {status && status.type === "success" ? (
+                    <Success />
+                  ) : (
+                    <Process />
+                  )}
                 </Form>
               )}
             </Formik>

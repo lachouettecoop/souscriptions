@@ -9,9 +9,8 @@ const StepNavigation = () => (
   <WithWizard>
     {({ next, previous, step, steps }) => {
       const isLast = steps.indexOf(step) >= steps.length - 1;
-
       return (
-        <Flex justifyContent="space-between">
+        <Flex justifyContent="space-between" key={step.id}>
           {steps.indexOf(step) > 0 && !isLast && (
             <IconButton
               icon={FaArrowCircleLeft}
@@ -23,16 +22,14 @@ const StepNavigation = () => (
             </IconButton>
           )}
 
-          {!isLast && (
-            <IconButton
-              icon={FaArrowCircleRight}
-              variant="primary"
-              onClick={next}
-              type={step.submitForm ? "submit" : "button"}
-            >
-              {step.labelNext || "Passer à l’étape suivante"}
-            </IconButton>
-          )}
+          <IconButton
+            icon={FaArrowCircleRight}
+            variant="primary"
+            onClick={next}
+            type={isLast ? "submit" : "button"}
+          >
+            {step.labelNext || "Passer à l’étape suivante"}
+          </IconButton>
         </Flex>
       );
     }}
