@@ -1,12 +1,10 @@
 import React from "react";
 import { Box, Text } from "rebass";
-import { Formik, Form } from "formik";
-
 import Auth from "./Auth";
 import PageHead from "./ui/PageHead";
 import Container from "./ui/Container";
 
-import Process from "./Subscription/Process";
+import Form from "./Subscription/Form";
 import Footer from "./Subscription/Footer";
 
 const Subscription = () => {
@@ -28,18 +26,7 @@ const Subscription = () => {
           </PageHead>
 
           <Container>
-            <Formik
-              initialValues={{ nom: user.lastname, prenom: user.firstname }}
-              onSubmit={(values, actions) => {
-                console.log({ values });
-              }}
-            >
-              {({ status }) => (
-                <Form>
-                  <Process />
-                </Form>
-              )}
-            </Formik>
+            <Form userId={user.barcode} />
           </Container>
 
           <Footer />

@@ -10,7 +10,7 @@ import SubmitButton from "./ui/SubmitButton";
 
 const Login = ({ onSuccess }) => {
   return (
-    <Box>
+    <Box mb={4}>
       <PageHead title="Connectez-vous">
         <Text as="p">
           Cet espace est réservé aux membres de La Chouette Coop. Veuillez vous

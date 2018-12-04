@@ -23,7 +23,7 @@ const Coordonnees = () => (
       <Field name="code_postal" type="text" placeholder="31100" size="6" />
     </FormGroup>
     <FormGroup htmlFor="ville" label="Ville">
-      <Field name="ville" type="text" placeholder="Jean" size="20" />
+      <Field name="ville" type="text" placeholder="Toulouse" size="20" />
     </FormGroup>
   </Box>
 );
