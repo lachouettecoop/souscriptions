@@ -1,15 +1,10 @@
 import React from "react";
 import { Box, Text } from "rebass";
-import { Formik, Form } from "formik";
-import { navigate } from "@reach/router";
-import ky from "ky";
-
 import Auth from "./Auth";
 import PageHead from "./ui/PageHead";
 import Container from "./ui/Container";
 
-import Process from "./Subscription/Process";
-import Success from "./Subscription/Success";
+import Form from "./Subscription/Form";
 import Footer from "./Subscription/Footer";
 
 const Subscription = () => {
@@ -31,43 +26,7 @@ const Subscription = () => {
           </PageHead>
 
           <Container>
-            <Formik
-              initialValues={{ nom: user.lastname, prenom: user.firstname }}
-              onSubmit={(values, actions) => {
-                console.log({ values });
-                ky.put(`/api/v1/chouettos/${user.barcode}`, {
-                  json: values
-                })
-                  .json()
-                  .then(res => {
-                    console.log("nouvelles données", res);
-                    actions.setSubmitting(false);
-                    actions.setStatus({
-                      type: "success",
-                      message: "Merci !"
-                    });
-                  })
-                  .catch(() => {
-                    actions.setSubmitting(false);
-                    actions.setStatus({
-                      type: "error",
-                      message:
-                        "Une erreur est survenue lors de la sauvegarde des données. Si le problème persiste, contactez nous."
-                    });
-                  });
-              }}
-            >
-              {({ status }) => (
-                <Form>
-                  {status && status.type === "error" && status.message}
-                  {status && status.type === "success" ? (
-                    <Success />
-                  ) : (
-                    <Process />
-                  )}
-                </Form>
-              )}
-            </Formik>
+            <Form userId={user.barcode} />
           </Container>
 
           <Footer />
