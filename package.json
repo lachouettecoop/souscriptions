@@ -1,10 +1,10 @@
 {
   "name": "chouette-souscriptions",
-  "version": "1.0.0",
+  "version": "0.1.0-dev",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon $npm_package_main & x0 docs -p 4242 --open",
+    "dev": "nodemon $npm_package_main",
     "commit": "git-cz",
     "start": "NODE_ENV=production node $npm_package_main",
     "build": "parcel build src/index.html",
@@ -14,7 +14,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@compositor/x0": "^6.0.7",
     "commitizen": "^3.0.4",
     "cz-conventional-changelog": "^2.1.0",
     "nodemon": "^1.18.6",
