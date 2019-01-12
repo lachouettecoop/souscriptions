@@ -2,11 +2,19 @@
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-**TRAVAIL EN COURS** La documentation et tout le reste arriveront bientôt :D
+**TRAVAIL EN COURS** Cette application n’est pas encore utilisée en production
 
 Cette application est une application minimaliste permettant aux Chouettos de
 simplifier la souscription aux parts sociales en pré-remplissant les
 informations nécessaires en ligne.
+
+## Documentation
+
+La documentation est disponible sur
+[le wiki du projet](https://github.com/lachouettecoop/souscriptions/wiki/).
+
+Elle contient de quoi comprendre l’état actuel du projet et s’y retrouver pour
+aider à l’améliorer.
 
 ## Présentation
 
