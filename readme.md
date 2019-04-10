@@ -2,7 +2,8 @@
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-**TRAVAIL EN COURS** Cette application n’est pas encore utilisée en production
+**ABANDONNÉE** Cette application n’a jamais été utilisée en production car le besoin a évolué.
+Nous avons décidé de faire évoluer notre application historique [Admin Chouettos](https://github.com/lachouettecoop/chouette-admin-chouettos) au lieu de créer une nouvelle application en partant de zéro.
 
 Cette application est une application minimaliste permettant aux Chouettos de
 simplifier la souscription aux parts sociales en pré-remplissant les
